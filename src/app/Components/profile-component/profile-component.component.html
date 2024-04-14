@@ -1,0 +1,32 @@
+<div class = 'flex flex-col border-b-2 p-4 gap-3 shadow-md h-[300px]'>
+    <div class = 'flex gap-5 mb-1 h-[200px] '>
+        <div class = ' min-w-fit max-w-fit w-3/4'>
+            <div *ngIf="!fetched">
+                <ngx-skeleton-loader appearance="circle"></ngx-skeleton-loader>
+            </div>
+            <img src = {{avatarUrl}}  *ngIf="avatarUrl" class = 'h-44 w-44 border-slate-300 border-2 rounded-full'>
+        </div>
+        <div class = 'w--[400px] h-44 border-b-2 ml-10 p-1'>
+            <p class = 'text-4xl'>{{ name }}</p>
+            <p class = 'font-light text-s' *ngIf="bio">{{ bio }}</p>
+            <div class = 'flex flex-row items-center gap-1' *ngIf="location">
+                <img class = 'h-3 w-3 p-0' src = '../../../assets/icons/LocationIcon.svg'>
+                <p class = 'font-light text-xs'>{{ location }}</p>
+            </div>
+            <div class = 'flex flex-row items-center' *ngIf="twitterProfile">
+                <p class = 'font-light text-xs'>Twitter:&nbsp; </p><a class = 'font-light text-xs'>{{ twitterProfile }}</a>
+            </div>
+            
+        </div>
+        <ngx-skeleton-loader *ngIf="!fetched" appearance='line' count = '3' class = 'w-[100%]'></ngx-skeleton-loader>
+    </div>
+    <div class = 'flex flex-row gap-1  items-center' *ngIf="githubLink">
+        <a href = {{githubLink}}>
+            <img src = '../../../assets/icons/LinkIcon.svg' class="h-5 w-5 text-xs font-light">
+        </a>
+        <a href = {{githubLink}}>
+            <p class = "font-light text-xs">&nbsp;&nbsp;{{ githubLink }}</p>
+        </a>
+    </div> 
+    <ngx-skeleton-loader appearance='line' count = '1' *ngIf="!fetched"></ngx-skeleton-loader>  
+</div> 
